@@ -2,15 +2,20 @@
 
 @section('content')
 <div class="wrapper pizza-details">
-    <h1>Order for ...</h1>
-    <p class="type">Type - ...</p>
-    <p class="base">Base - ...</p>
+    <h1>Order for {{ $pizza->name }}</h1>
+    <p class="type">Type - {{ $pizza->type }}</p>
+    <p class="base">Base - {{ $pizza->base }}</p>
+    @if(isset($pizza->toppings))
     <p class="toppings">Extra toppings:</p>
     <ul>
-        <li>...</li>
-        <li>...</li>
+        @foreach($pizza->toppings as $topping)
+        <li>{{ $topping }}</li>
+        @endforeach
     </ul>
-    <form action="" method="post">
+    @endif
+    <form action="{{ route('pizzas.destroy', $pizza->id) }}" method="post">
+        @csrf
+        @method('DELETE')
         <button>Complete Order</button>
     </form>
 </div>

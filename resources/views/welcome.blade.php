@@ -21,6 +21,9 @@
         <div class="title m-b-md">
             The North's Best Pizzas
         </div>
+
+        <p>{{ session('message') }}</p>
+
         <a href="{{ route('pizzas.create') }}">Order a Pizza</a>
     </div>
 </div>
